@@ -28,3 +28,20 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Scroll snap for main vertical sections */
+main.snap-y {
+  scroll-snap-type: y mandatory;
+  overflow-y: auto;
+  height: 100vh;
+}
+
+section.snap-start {
+  scroll-snap-align: start;
+}
+
+@media (max-width: 640px) {
+  main.snap-y {
+    height: 100dvh;
+  }
+}
