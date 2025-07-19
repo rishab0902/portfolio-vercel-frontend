@@ -31,7 +31,7 @@ export default function ProjectsSection() {
   return (
     <section
       id="projects"
-      className="w-full max-w-6xl mx-auto py-10 sm:py-16 md:py-20 px-2 sm:px-4 flex flex-col items-center relative overflow-x-hidden"
+      className="w-full max-w-6xl mx-auto py-16 sm:py-20 px-2 sm:px-4 flex flex-col items-center relative overflow-x-hidden"
     >
       {/* Animated SVG or gradient background */}
       <div className="absolute inset-0 -z-10 pointer-events-none">
@@ -42,10 +42,13 @@ export default function ProjectsSection() {
               <stop offset="100%" stopColor="#3b82f6" />
             </linearGradient>
           </defs>
-          <ellipse cx="720" cy="200" rx="900" ry="160" fill="url(#projects-gradient)" fillOpacity="0.10">
-            <animate attributeName="rx" values="900;950;900" dur="8s" repeatCount="indefinite" />
-            <animate attributeName="ry" values="160;180;160" dur="8s" repeatCount="indefinite" />
-          </ellipse>
+          <ellipse cx="720" cy="200" rx="900" ry="160" fill="url(#projects-gradient)" fillOpacity="0.10" />
+          <circle cx="300" cy="120" r="80" fill="#06b6d4" fillOpacity="0.07">
+            <animate attributeName="cy" values="120;160;120" dur="8s" repeatCount="indefinite" />
+          </circle>
+          <circle cx="1200" cy="320" r="100" fill="#3b82f6" fillOpacity="0.07">
+            <animate attributeName="cy" values="320;360;320" dur="8s" repeatCount="indefinite" />
+          </circle>
         </svg>
       </div>
       <h2 className="text-4xl md:text-5xl font-bold mb-10 sm:mb-14 text-center bg-gradient-to-r from-cyan-400 to-blue-600 bg-clip-text text-transparent">
@@ -54,12 +57,12 @@ export default function ProjectsSection() {
       {loading ? (
         <div className="text-gray-400">Loading projects...</div>
       ) : (
-        <div className="flex flex-col sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10 w-full overflow-x-auto sm:overflow-visible snap-x sm:snap-none pb-2 sm:pb-0">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 w-full">
           {repos.map((repo, idx) => (
             <div
               key={repo.id}
-              className="relative group rounded-2xl bg-gray-800/60 border border-gray-700/40 shadow-xl backdrop-blur-md p-4 sm:p-7 flex flex-col transition-all duration-300 hover:scale-[1.03] hover:shadow-2xl hover:bg-gray-700/70 w-full min-w-0 snap-center animate-fade-in-up box-border"
-              style={{ minHeight: 180, animationDelay: `${idx * 120}ms` }}
+              className="relative group rounded-2xl bg-gray-800/60 border border-gray-700/40 shadow-xl backdrop-blur-md p-6 flex flex-col transition-all duration-300 hover:scale-[1.04] hover:shadow-2xl hover:bg-gray-700/70 w-full min-w-0 box-border overflow-hidden animate-fade-in-up"
+              style={{ minHeight: 200, animationDelay: `${idx * 120}ms` }}
             >
               {idx === 0 && (
                 <span className="absolute top-4 right-4 bg-gradient-to-r from-yellow-400 to-orange-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg z-10 animate-bounce">Featured</span>
@@ -76,9 +79,11 @@ export default function ProjectsSection() {
                   {repo.name}
                 </a>
               </div>
-              <p className="text-gray-200 mb-4 flex-1 min-h-[48px]">
-                {repo.description || <span className="italic text-gray-400">No description.</span>}
-              </p>
+              <div className="flex-1 mb-3">
+                <p className="text-gray-200 min-h-[48px]">
+                  {repo.description || <span className="italic text-gray-400">No description.</span>}
+                </p>
+              </div>
               <div className="flex items-center justify-between mt-auto">
                 <div className="flex items-center gap-4 text-sm text-gray-400">
                   <span className="flex items-center gap-1"><FaStar className="text-yellow-400" /> {repo.stargazers_count}</span>
@@ -95,8 +100,8 @@ export default function ProjectsSection() {
                   View on GitHub <FaGithub className="w-4 h-4" />
                 </a>
               </div>
-              {/* Card entry animation */}
-              <div className="absolute inset-0 z-[-1] opacity-0 group-hover:opacity-10 transition-opacity duration-300 bg-gradient-to-br from-cyan-400/30 to-blue-600/20 rounded-2xl pointer-events-none" />
+              {/* Hover overlay */}
+              <div className="absolute inset-0 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-br from-cyan-400/20 to-blue-600/10 pointer-events-none" />
             </div>
           ))}
         </div>

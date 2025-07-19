@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import emailjs from "@emailjs/browser";
-import { FaEnvelope, FaUser, FaCommentDots, FaCheckCircle, FaTimesCircle } from "react-icons/fa";
+import { FaEnvelope, FaUser, FaCommentDots, FaCheckCircle, FaTimesCircle, FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
 
 export default function ContactSection() {
   const [status, setStatus] = useState<string | null>(null);
@@ -32,7 +32,7 @@ export default function ContactSection() {
   return (
     <section
       id="contact"
-      className="w-full max-w-2xl mx-auto py-20 px-4 flex flex-col items-center relative overflow-x-hidden"
+      className="w-full max-w-2xl mx-auto py-16 sm:py-20 px-4 flex flex-col items-center relative overflow-x-hidden"
     >
       {/* Animated SVG or gradient background */}
       <div className="absolute inset-0 -z-10 pointer-events-none">
@@ -43,10 +43,7 @@ export default function ContactSection() {
               <stop offset="100%" stopColor="#3b82f6" />
             </linearGradient>
           </defs>
-          <ellipse cx="720" cy="200" rx="900" ry="160" fill="url(#contact-gradient)" fillOpacity="0.10">
-            <animate attributeName="rx" values="900;950;900" dur="8s" repeatCount="indefinite" />
-            <animate attributeName="ry" values="160;180;160" dur="8s" repeatCount="indefinite" />
-          </ellipse>
+          <ellipse cx="720" cy="200" rx="900" ry="160" fill="url(#contact-gradient)" fillOpacity="0.10" />
         </svg>
       </div>
       <h2 className="text-4xl md:text-5xl font-bold mb-10 text-center bg-gradient-to-r from-cyan-400 to-blue-600 bg-clip-text text-transparent">
@@ -54,41 +51,50 @@ export default function ContactSection() {
       </h2>
       <form
         onSubmit={handleSubmit}
-        className="w-full flex flex-col gap-4 bg-gray-800/60 p-8 rounded-2xl shadow-xl border border-gray-700/40 backdrop-blur-md relative animate-fade-in-up"
+        className="w-full flex flex-col gap-6 bg-gray-800/60 p-8 rounded-2xl shadow-2xl border border-gray-700/40 backdrop-blur-md relative animate-fade-in-up"
       >
         <div className="absolute -top-8 left-1/2 -translate-x-1/2 bg-gradient-to-r from-cyan-400 to-blue-600 rounded-full p-3 shadow-lg animate-float">
           <FaEnvelope className="w-8 h-8 text-white" />
         </div>
         <div className="flex flex-col gap-4 mt-6">
           <div className="relative">
-            <FaUser className="absolute left-3 top-1/2 -translate-y-1/2 text-cyan-400" />
             <input
               type="text"
               name="user_name"
-              placeholder="Your Name"
+              placeholder=" "
               required
-              className="pl-10 pr-4 py-2 rounded bg-gray-900 text-white border border-gray-700 focus:outline-none focus:border-cyan-500 w-full"
+              className="peer pl-10 pr-4 py-3 rounded bg-gray-900 text-white border border-gray-700 focus:outline-none focus:border-cyan-500 w-full placeholder-transparent"
             />
+            <FaUser className="absolute left-3 top-1/2 -translate-y-1/2 text-cyan-400" />
+            <label className="absolute left-10 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none transition-all duration-200 peer-focus:top-0 peer-focus:-translate-y-full peer-focus:text-cyan-400 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:text-gray-400 bg-gray-900 px-1">
+              Your Name
+            </label>
           </div>
           <div className="relative">
-            <FaEnvelope className="absolute left-3 top-1/2 -translate-y-1/2 text-cyan-400" />
             <input
               type="email"
               name="user_email"
-              placeholder="Your Email"
+              placeholder=" "
               required
-              className="pl-10 pr-4 py-2 rounded bg-gray-900 text-white border border-gray-700 focus:outline-none focus:border-cyan-500 w-full"
+              className="peer pl-10 pr-4 py-3 rounded bg-gray-900 text-white border border-gray-700 focus:outline-none focus:border-cyan-500 w-full placeholder-transparent"
             />
+            <FaEnvelope className="absolute left-3 top-1/2 -translate-y-1/2 text-cyan-400" />
+            <label className="absolute left-10 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none transition-all duration-200 peer-focus:top-0 peer-focus:-translate-y-full peer-focus:text-cyan-400 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:text-gray-400 bg-gray-900 px-1">
+              Your Email
+            </label>
           </div>
           <div className="relative">
-            <FaCommentDots className="absolute left-3 top-3 text-cyan-400" />
             <textarea
               name="message"
-              placeholder="Your Message"
+              placeholder=" "
               required
               rows={5}
-              className="pl-10 pr-4 py-2 rounded bg-gray-900 text-white border border-gray-700 focus:outline-none focus:border-cyan-500 w-full"
+              className="peer pl-10 pr-4 py-3 rounded bg-gray-900 text-white border border-gray-700 focus:outline-none focus:border-cyan-500 w-full placeholder-transparent resize-none"
             />
+            <FaCommentDots className="absolute left-3 top-4 text-cyan-400" />
+            <label className="absolute left-10 top-4 text-gray-400 pointer-events-none transition-all duration-200 peer-focus:top-0 peer-focus:-translate-y-5 peer-focus:text-cyan-400 peer-placeholder-shown:top-4 peer-placeholder-shown:text-gray-400 bg-gray-900 px-1">
+              Your Message
+            </label>
           </div>
         </div>
         <button
@@ -105,6 +111,11 @@ export default function ContactSection() {
           </div>
         )}
       </form>
+      <div className="flex gap-6 mt-8 animate-fade-in">
+        <a href="https://github.com/rishab0902" target="_blank" rel="noopener noreferrer" className="text-cyan-400 hover:text-cyan-300 text-2xl transition-colors"><FaGithub /></a>
+        <a href="https://linkedin.com/in/rishab0902" target="_blank" rel="noopener noreferrer" className="text-cyan-400 hover:text-cyan-300 text-2xl transition-colors"><FaLinkedin /></a>
+        <a href="https://twitter.com/rishab0902" target="_blank" rel="noopener noreferrer" className="text-cyan-400 hover:text-cyan-300 text-2xl transition-colors"><FaTwitter /></a>
+      </div>
       <p className="text-gray-400 text-sm mt-4 text-center">
         This form uses{" "}
         <a
