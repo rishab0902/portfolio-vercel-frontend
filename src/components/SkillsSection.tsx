@@ -95,7 +95,7 @@ export default function SkillsSection() {
   return (
     <section
       id="skills"
-      className="w-full py-20 bg-gradient-to-b from-gray-900 to-black relative overflow-x-hidden"
+      className="w-full py-10 sm:py-16 md:py-20 bg-gradient-to-b from-gray-900 to-black relative overflow-x-hidden"
     >
       {/* Animated SVG or gradient background */}
       <div className="absolute inset-0 -z-10 pointer-events-none">
@@ -112,24 +112,24 @@ export default function SkillsSection() {
           </ellipse>
         </svg>
       </div>
-      <div className="max-w-6xl mx-auto px-4">
+      <div className="max-w-6xl mx-auto px-2 sm:px-4 overflow-hidden">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-4xl md:text-5xl font-bold mb-16 text-center bg-gradient-to-r from-cyan-400 to-blue-600 bg-clip-text text-transparent"
+          className="text-4xl md:text-5xl font-bold mb-10 sm:mb-16 text-center bg-gradient-to-r from-cyan-400 to-blue-600 bg-clip-text text-transparent"
         >
           Technical Expertise
         </motion.h2>
-        {/* Responsive horizontal scroll on mobile */}
-        <div className="flex flex-col md:grid md:grid-cols-2 gap-12 overflow-x-auto md:overflow-visible snap-x md:snap-none pb-4 md:pb-0">
+        {/* Responsive horizontal scroll on mobile only */}
+        <div className="flex flex-col sm:grid sm:grid-cols-2 gap-8 sm:gap-12 overflow-x-auto sm:overflow-visible snap-x sm:snap-none pb-2 sm:pb-0 w-full">
           {Object.entries(skillCategories).map(([category, skills], idx) => (
             <motion.div
               key={category}
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="bg-gray-800/60 rounded-xl p-6 backdrop-blur-md border border-gray-700/50 shadow-xl min-w-[320px] md:min-w-0 snap-center transition-transform duration-300 hover:scale-[1.03] hover:shadow-2xl relative group"
+              className="bg-gray-800/60 rounded-xl p-4 sm:p-6 backdrop-blur-md border border-gray-700/50 shadow-xl w-full min-w-0 snap-center transition-transform duration-300 hover:scale-[1.03] hover:shadow-2xl relative group box-border"
               style={{ zIndex: 2 + idx }}
             >
               <h3 className="text-2xl font-bold text-cyan-300 mb-6 flex items-center gap-2">
