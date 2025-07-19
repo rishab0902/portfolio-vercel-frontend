@@ -95,8 +95,23 @@ export default function SkillsSection() {
   return (
     <section
       id="skills"
-      className="w-full py-20 bg-gradient-to-b from-gray-900 to-black"
+      className="w-full py-20 bg-gradient-to-b from-gray-900 to-black relative overflow-x-hidden"
     >
+      {/* Animated SVG or gradient background */}
+      <div className="absolute inset-0 -z-10 pointer-events-none">
+        <svg className="w-full h-full" viewBox="0 0 1440 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="skills-gradient" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stopColor="#06b6d4" />
+              <stop offset="100%" stopColor="#3b82f6" />
+            </linearGradient>
+          </defs>
+          <ellipse cx="720" cy="200" rx="900" ry="160" fill="url(#skills-gradient)" fillOpacity="0.10">
+            <animate attributeName="rx" values="900;950;900" dur="8s" repeatCount="indefinite" />
+            <animate attributeName="ry" values="160;180;160" dur="8s" repeatCount="indefinite" />
+          </ellipse>
+        </svg>
+      </div>
       <div className="max-w-6xl mx-auto px-4">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
@@ -106,18 +121,19 @@ export default function SkillsSection() {
         >
           Technical Expertise
         </motion.h2>
-
-        <div className="grid md:grid-cols-2 gap-12">
-          {Object.entries(skillCategories).map(([category, skills]) => (
+        {/* Responsive horizontal scroll on mobile */}
+        <div className="flex flex-col md:grid md:grid-cols-2 gap-12 overflow-x-auto md:overflow-visible snap-x md:snap-none pb-4 md:pb-0">
+          {Object.entries(skillCategories).map(([category, skills], idx) => (
             <motion.div
               key={category}
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="bg-gray-800/50 rounded-xl p-6 backdrop-blur-sm border border-gray-700/50"
+              className="bg-gray-800/60 rounded-xl p-6 backdrop-blur-md border border-gray-700/50 shadow-xl min-w-[320px] md:min-w-0 snap-center transition-transform duration-300 hover:scale-[1.03] hover:shadow-2xl relative group"
+              style={{ zIndex: 2 + idx }}
             >
-              <h3 className="text-2xl font-bold text-cyan-300 mb-6">
-                {category}
+              <h3 className="text-2xl font-bold text-cyan-300 mb-6 flex items-center gap-2">
+                <span className="animate-float inline-block">{category}</span>
               </h3>
               <div className="space-y-4">
                 {skills.map((skill) => (
@@ -130,7 +146,9 @@ export default function SkillsSection() {
                   >
                     <div className="flex items-center gap-3 mb-2">
                       {skill.icon && (
-                        <skill.icon className="w-5 h-5 text-cyan-400" />
+                        <span className="w-5 h-5 text-cyan-400 animate-float-slow">
+                          <skill.icon className="w-5 h-5" />
+                        </span>
                       )}
                       <span className="text-gray-200 font-medium">
                         {skill.name}
