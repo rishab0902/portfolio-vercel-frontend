@@ -50,49 +50,38 @@ export default function Home() {
             </ellipse>
           </svg>
         </div>
-        <Parallax speed={-20}>
-          <section id="hero" className="w-full max-w-5xl px-4 py-16 flex flex-col items-center gap-8 relative z-10">
-            <ThreeHero />
-            <h1 className="text-5xl xs:text-6xl md:text-7xl font-extrabold text-center bg-gradient-to-r from-cyan-400 via-blue-500 to-blue-600 bg-clip-text text-transparent drop-shadow-lg animate-gradient-move">
-              Hi, I&apos;m Rishab
-            </h1>
-            <p className="text-xl xs:text-2xl md:text-3xl text-center max-w-2xl text-gray-200 opacity-0 animate-fade-in [animation-delay:300ms]">
-              Full Stack Developer | Problem Solver | Competitive Programmer
+        <section id="hero" className="w-full max-w-5xl px-4 py-16 flex flex-col items-center gap-8 relative z-10 scroll-mt-[120px]">
+          <ThreeHero />
+          <h1 className="text-5xl xs:text-6xl md:text-7xl font-extrabold text-center bg-gradient-to-r from-cyan-400 via-blue-500 to-blue-600 bg-clip-text text-transparent drop-shadow-lg animate-gradient-move">
+            Hi, I&apos;m Rishab
+          </h1>
+          <p className="text-xl xs:text-2xl md:text-3xl text-center max-w-2xl text-gray-200 opacity-0 animate-fade-in [animation-delay:300ms]">
+            Full Stack Developer | Problem Solver | Competitive Programmer
+          </p>
+          <div className="mt-8 text-center text-lg text-gray-400 max-w-3xl">
+            <p className="text-lg text-gray-300 mb-4 text-center max-w-2xl">
+              I am a passionate Software Developer with hands-on experience
+               in Java, React, and full-stack development. I enjoy solving challenging problems, working on scalable web applications, and participating in competitive programming and DSA.
             </p>
-            <div className="mt-8 text-center text-lg text-gray-400 max-w-3xl">
-              <p className="text-lg text-gray-300 mb-4 text-center max-w-2xl">
-                I am a passionate Software Developer with hands-on experience in Java, React, and full-stack development. I enjoy solving challenging problems, working on scalable web applications, and participating in competitive programming and DSA.
-              </p>
-              <p className="text-lg text-gray-300 mb-4 text-center max-w-2xl">
-                <strong>Opportunities I&apos;m seeking:</strong> SDE, Java Developer, Frontend (React), and Fullstack roles. I also aspire to learn and work in AI/ML.
-              </p>
-              <p className="text-lg text-gray-300 mb-6 text-center max-w-2xl">
-                For a detailed look at my experience, skills, and projects, download my resume below.
-              </p>
-            </div>
-            <div className="mt-8 flex flex-col xs:flex-row gap-4 justify-center items-center">
-              <a href="#skills" className="px-7 py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-bold shadow-lg hover:from-cyan-400 hover:to-blue-500 transition-colors text-lg animate-fade-in [animation-delay:1500ms]">See My Skills</a>
-              <a href="/Kumar Rishab SDE.pdf" download target="_blank" rel="noopener noreferrer" className="px-7 py-3 rounded-xl bg-white/10 border border-cyan-400 text-cyan-300 font-bold shadow-lg hover:bg-cyan-400 hover:text-white transition-colors text-lg animate-fade-in [animation-delay:1800ms]">Download Resume</a>
-            </div>
-            <div className="mt-8 text-center text-lg text-gray-400 animate-fade-in [animation-delay:2100ms]">
-              <span>Scroll down to see my skills, projects, and more!</span>
-            </div>
-          </section>
-        </Parallax>
-        <div className="w-full flex flex-col items-center">
-          <Parallax speed={-10} className="reveal w-full">
-            <SkillsSection />
-          </Parallax>
-          <Parallax speed={0} className="reveal w-full">
-            <ProjectsSection />
-          </Parallax>
-          <Parallax speed={10} className="reveal w-full">
-            <ResumeSection />
-          </Parallax>
-          <Parallax speed={20} className="reveal w-full">
-            <ContactSection />
-          </Parallax>
-        </div>
+            <p className="text-lg text-gray-300 mb-4 text-center max-w-2xl">
+              <strong>Opportunities I&apos;m seeking:</strong> SDE, Java Developer, Frontend (React), and Fullstack roles. I also aspire to learn and work in AI/ML.
+            </p>
+            <p className="text-lg text-gray-300 mb-6 text-center max-w-2xl">
+              For a detailed look at my experience, skills, and projects, download my resume below.
+            </p>
+          </div>
+          <div className="mt-8 flex flex-col xs:flex-row gap-4 justify-center items-center">
+            <a href="#skills" className="px-7 py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-bold shadow-lg hover:from-cyan-400 hover:to-blue-500 transition-colors text-lg animate-fade-in [animation-delay:1500ms]">See My Skills</a>
+            <a href="/Kumar Rishab SDE.pdf" download target="_blank" rel="noopener noreferrer" className="px-7 py-3 rounded-xl bg-white/10 border border-cyan-400 text-cyan-300 font-bold shadow-lg hover:bg-cyan-400 hover:text-white transition-colors text-lg animate-fade-in [animation-delay:1800ms]">Download Resume</a>
+          </div>
+          <div className="mt-8 text-center text-lg text-gray-400 animate-fade-in [animation-delay:2100ms]">
+            <span>Scroll down to see my skills, projects, and more!</span>
+          </div>
+        </section>
+        <section className="w-full scroll-mt-[120px]"><SkillsSection /></section>
+        <section className="w-full scroll-mt-[120px]"><ProjectsSection /></section>
+        <section className="w-full scroll-mt-[120px]"><ResumeSection /></section>
+        <section className="w-full scroll-mt-[120px]"><ContactSection /></section>
       </main>
     </ParallaxProvider>
   );
