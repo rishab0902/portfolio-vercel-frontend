@@ -4,7 +4,7 @@ export default function ResumeSection() {
   return (
     <section
       id="resume"
-      className="w-full max-w-4xl mx-auto py-20 px-4 flex flex-col items-center relative overflow-x-hidden"
+      className="w-full max-w-4xl mx-auto py-20 px-4 flex flex-col items-center relative overflow-x-hidden pt-16"
     >
       {/* Animated SVG or gradient background */}
       <div className="absolute inset-0 -z-10 pointer-events-none">
@@ -24,7 +24,7 @@ export default function ResumeSection() {
       <h2 className="text-4xl md:text-5xl font-bold mb-10 text-center bg-gradient-to-r from-cyan-400 to-blue-600 bg-clip-text text-transparent">
         Resume
       </h2>
-      <div className="bg-gray-800/60 border border-gray-700/40 shadow-xl backdrop-blur-md rounded-2xl p-8 flex flex-col items-center w-full max-w-xl animate-fade-in-up">
+      <div className="bg-gray-800/60 border border-gray-700/40 shadow-xl backdrop-blur-md rounded-2xl p-8 flex flex-col items-center w-full max-w-xl animate-fade-in-up mt-8">
         <a
           href="/Kumar Rishab SDE.pdf"
           download
@@ -34,7 +34,7 @@ export default function ResumeSection() {
         >
           Download Resume (PDF)
         </a>
-        <div className="w-full aspect-[4/5] rounded-lg shadow-lg bg-white overflow-hidden hidden sm:block animate-fade-in-up">
+        <div className="w-full aspect-[4/5] rounded-lg shadow-lg bg-white overflow-hidden hidden sm:block animate-fade-in-up max-h-[60vh] object-contain">
           <iframe
             src="/Kumar Rishab SDE.pdf"
             title="Resume Preview"

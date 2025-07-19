@@ -34,7 +34,7 @@ export default function Home() {
 
   return (
     <ParallaxProvider>
-      <main className="min-h-screen bg-gradient-to-br from-gray-950 to-gray-900 text-white flex flex-col items-center relative overflow-x-hidden snap-y">
+      <main className="min-h-screen bg-gradient-to-br from-gray-950 to-gray-900 text-white flex flex-col items-center relative overflow-x-hidden">
         {/* Animated SVG or gradient background */}
         <div className="absolute inset-0 -z-10 pointer-events-none">
           <svg className="w-full h-full" viewBox="0 0 1440 600" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -50,7 +50,7 @@ export default function Home() {
             </ellipse>
           </svg>
         </div>
-        <section id="hero" className="w-full max-w-5xl px-4 py-16 flex flex-col items-center gap-8 relative z-10 snap-start">
+        <section id="hero" className="w-full max-w-5xl px-4 py-16 flex flex-col items-center gap-8 relative z-10 scroll-mt-[120px]">
           <ThreeHero />
           <h1 className="text-5xl xs:text-6xl md:text-7xl font-extrabold text-center bg-gradient-to-r from-cyan-400 via-blue-500 to-blue-600 bg-clip-text text-transparent drop-shadow-lg animate-gradient-move">
             Hi, I&apos;m Rishab
@@ -60,7 +60,8 @@ export default function Home() {
           </p>
           <div className="mt-8 text-center text-lg text-gray-400 max-w-3xl">
             <p className="text-lg text-gray-300 mb-4 text-center max-w-2xl">
-              I am a passionate Software Developer with hands-on experience in Java, React, and full-stack development. I enjoy solving challenging problems, working on scalable web applications, and participating in competitive programming and DSA.
+              I am a passionate Software Developer with hands-on experience
+               in Java, React, and full-stack development. I enjoy solving challenging problems, working on scalable web applications, and participating in competitive programming and DSA.
             </p>
             <p className="text-lg text-gray-300 mb-4 text-center max-w-2xl">
               <strong>Opportunities I&apos;m seeking:</strong> SDE, Java Developer, Frontend (React), and Fullstack roles. I also aspire to learn and work in AI/ML.
@@ -77,10 +78,10 @@ export default function Home() {
             <span>Scroll down to see my skills, projects, and more!</span>
           </div>
         </section>
-        <section className="w-full snap-start"><SkillsSection /></section>
-        <section className="w-full snap-start"><ProjectsSection /></section>
-        <section className="w-full snap-start"><ResumeSection /></section>
-        <section className="w-full snap-start"><ContactSection /></section>
+        <section className="w-full scroll-mt-[120px]"><SkillsSection /></section>
+        <section className="w-full scroll-mt-[120px]"><ProjectsSection /></section>
+        <section className="w-full scroll-mt-[120px]"><ResumeSection /></section>
+        <section className="w-full scroll-mt-[120px]"><ContactSection /></section>
       </main>
     </ParallaxProvider>
   );

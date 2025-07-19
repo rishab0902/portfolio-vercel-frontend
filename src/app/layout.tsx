@@ -1,7 +1,11 @@
 "use client";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import ScrollToTopOnMount from "../components/ScrollToTopOnMount";
+import ForceTopOnReload from "../components/ForceTopOnReload";
+
+const NAVBAR_HEIGHT = 120; // px
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -48,9 +52,36 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  useEffect(() => {
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual';
+    }
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
+    function handleAnchorClick(e: MouseEvent) {
+      const anchor = (e.target as HTMLElement).closest('a[href^="#"]');
+      if (anchor) {
+        const id = anchor.getAttribute('href')!.slice(1);
+        const el = document.getElementById(id) || document.querySelector(anchor.getAttribute('href')!);
+        if (el) {
+          e.preventDefault();
+          const y = el.getBoundingClientRect().top + window.scrollY - NAVBAR_HEIGHT;
+          window.scrollTo({ top: y, behavior: 'smooth' });
+        }
+      }
+    }
+    document.addEventListener('click', handleAnchorClick);
+    return () => document.removeEventListener('click', handleAnchorClick);
+  }, []);
+
   return (
     <html lang="en" suppressHydrationWarning={true}>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gradient-to-br from-gray-950 to-gray-900`}>
+        <div id="top"></div>
+        <ForceTopOnReload />
+        <ScrollToTopOnMount />
         <Navbar />
         <div className="pt-24 md:pt-20">{children}</div>
       </body>
