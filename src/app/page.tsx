@@ -1,103 +1,79 @@
-import Image from "next/image";
+"use client";
+import ContactSection from "../components/ContactSection";
+import ThreeHero from "../components/ThreeHero";
+import ResumeSection from "../components/ResumeSection";
+import ProjectsSection from "../components/ProjectsSection";
+import SkillsSection from "../components/SkillsSection";
+import { useEffect } from "react";
+import { ParallaxProvider, Parallax } from 'react-scroll-parallax';
 
 export default function Home() {
-  return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  useEffect(() => {
+    const revealSections = document.querySelectorAll(".reveal");
+    const observer = new window.IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("opacity-100", "translate-y-0");
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
+    revealSections.forEach((section) => {
+      section.classList.add(
+        "opacity-0",
+        "translate-y-8",
+        "transition-all",
+        "duration-700"
+      );
+      observer.observe(section);
+    });
+    return () => observer.disconnect();
+  }, []);
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  return (
+    <ParallaxProvider>
+      <main className="min-h-screen bg-gradient-to-br from-gray-950 to-gray-900 text-white flex flex-col items-center">
+        <Parallax speed={-20}>
+          <section className="w-full max-w-5xl px-4 py-12 flex flex-col items-center gap-8">
+            <h1 className="text-5xl md:text-7xl font-extrabold text-center bg-gradient-to-r from-cyan-400 to-blue-600 bg-clip-text text-transparent drop-shadow-lg">
+              Hi, I&apos;m Rishab
+            </h1>
+            <p className="text-xl md:text-2xl text-center max-w-2xl text-gray-300">
+              Full Stack Developer | Problem Solver | Competitive Programmer
+            </p>
+            <div className="mt-8 text-center text-lg text-gray-400 max-w-3xl">
+              <p className="text-lg text-gray-300 mb-4 text-center max-w-2xl">
+                I am a passionate Software Developer with hands-on experience in Java, React, and full-stack development. I enjoy solving challenging problems, working on scalable web applications, and participating in competitive programming and DSA.
+              </p>
+              <p className="text-lg text-gray-300 mb-4 text-center max-w-2xl">
+                <strong>Opportunities I&apos;m seeking:</strong> SDE, Java Developer, Frontend (React), and Fullstack roles. I also aspire to learn and work in AI/ML.
+              </p>
+              <p className="text-lg text-gray-300 mb-6 text-center max-w-2xl">
+                For a detailed look at my experience, skills, and projects, download my resume below.
+              </p>
+            </div>
+            <div className="mt-8 text-center text-lg text-gray-400">
+              <span>Scroll down to see my skills, projects, and more!</span>
+            </div>
+          </section>
+        </Parallax>
+        <div className="w-full flex flex-col items-center">
+          <Parallax speed={-10} className="reveal w-full">
+            <SkillsSection />
+          </Parallax>
+          <Parallax speed={0} className="reveal w-full">
+            <ProjectsSection />
+          </Parallax>
+          <Parallax speed={10} className="reveal w-full">
+            <ResumeSection />
+          </Parallax>
+          <Parallax speed={20} className="reveal w-full">
+            <ContactSection />
+          </Parallax>
         </div>
       </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+    </ParallaxProvider>
   );
 }
